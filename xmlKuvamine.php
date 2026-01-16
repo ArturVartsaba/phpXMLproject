@@ -11,6 +11,14 @@ function erialaOtsing($paring)
         {
             array_push($tulemus, $opilane);
         }
+        else if (substr(strtolower($opilane->nimi), 0, strlen($paring)) == $paring)
+        {
+            array_push($tulemus, $opilane);
+        }
+        else if (substr(strtolower($opilane->isikukood), 0, strlen($paring)) == $paring)
+        {
+            array_push($tulemus, $opilane);
+        }
     }
     return $tulemus;
 }
@@ -28,8 +36,8 @@ function erialaOtsing($paring)
 echo "1.õpilase nimi: ".$opilased->opilane[0]->nimi;
 ?>
 <form action="?" method="post">
-    <label for="otsing">Eriala:</label>
-    <input type="text" name="otsing" id="otsing">
+    <label for="otsing">Otsi:</label>
+    <input type="text" name="otsing" id="otsing" placeholder="Nimi | Eriala | Isikukood">
     <input type="submit" value="OK">
 </form>
 <?php
