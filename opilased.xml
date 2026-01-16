@@ -1,21 +1,39 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <opilased>
-    <opilane>
-        <nimi>Juku</nimi>
-        <isikukood>1256987</isikukood>
-        <eriala>Tarkvara arendaja</eriala>
-        <elukoht>
-            <linn>Tallinn</linn>
-            <maakond>Harjumaa</maakond>
-        </elukoht>
-    </opilane>
-    <opilane>
-        <nimi>Henry</nimi>
-        <isikukood>25689</isikukood>
-        <eriala>Noorem tarkvaraarendaja</eriala>
-        <elukoht>
-            <linn>Tartu</linn>
-            <maakond>Tartumaa</maakond>
-        </elukoht>
-    </opilane>
+  <opilane>
+    <nimi>Juku</nimi>
+    <isikukood>1256987</isikukood>
+    <eriala>Tarkvara arendaja</eriala>
+    <elukoht>
+      <linn>Tallinn</linn>
+      <maakond>Harjumaa</maakond>
+    </elukoht>
+    <pilt/>
+    <aine>
+      <nimetus>Matemaatika</nimetus>
+      <hinne>3</hinne>
+    </aine>
+    <aine>
+      <nimetus>Füüsika</nimetus>
+      <hinne>4</hinne>
+    </aine>
+  </opilane>
+  <opilane>
+    <nimi>Henry</nimi>
+    <isikukood>25689</isikukood>
+    <eriala>Noorem tarkvaraarendaja</eriala>
+    <elukoht>
+      <linn>Tartu</linn>
+      <maakond>Tartumaa</maakond>
+    </elukoht>
+    <pilt/>
+    <aine>
+      <nimetus>Matemaatika</nimetus>
+      <hinne>4</hinne>
+    </aine>
+    <aine>
+      <nimetus>Füüsika</nimetus>
+      <hinne>2</hinne>
+    </aine>
+  </opilane>
 </opilased>

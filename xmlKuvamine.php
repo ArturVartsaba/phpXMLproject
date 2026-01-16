@@ -1,21 +1,17 @@
 <?php
-function lisaOpilane()
+function LisaOpilane()
 {
     $xmlDoc = new DOMDocument("1.0", "UTF-8");
     $xmlDoc->preserveWhiteSpace = false;
     $xmlDoc->load("opilased.xml");
     $xmlDoc->formatOutput = true;
-
     $xmlOpilane = $xmlDoc->createElement("opilane");
     $xmlDoc->appendChild($xmlOpilane);
-
     $xmlRoot = $xmlDoc->documentElement;
     $xmlRoot->appendChild($xmlOpilane);
-
     $elukoht = $xmlDoc->createElement("elukoht");
     $xmlOpilane->appendChild($elukoht);
     unset($_POST["submit"]);
-
     foreach ($_POST as $voti => $vaartus)
     {
         $kirje = $xmlDoc->createElement($voti, $vaartus);
@@ -29,7 +25,6 @@ function lisaOpilane()
     $xmlDoc->save("opilased.xml");
     header("Refresh:0");
 }
-
 $opilased=simplexml_load_file("opilased.xml");
 
 //õpilase otsing
@@ -85,6 +80,9 @@ if(!empty($_POST['otsing']))
         <th>isikukood</th>
         <th>Eriala</th>
         <th>Elukoht</th>
+        <th>Pilt</th>
+        <th>Aine</th>
+        <th>Hinne</th>
     </tr>";
 
     foreach($tulemus as $opilane){
@@ -94,6 +92,9 @@ if(!empty($_POST['otsing']))
         echo "<td>".$opilane->eriala."</td>";
         echo "<td>".$opilane->elukoht->linn."</td>", ".
         $opilane->elukoht->maakond.</th>";
+        echo "<td>"."<img src='$opilane->pilt' alt='img'>"."</td>";
+        echo "<td>".$opilane->aine->nimetus."</td>";
+        echo "<td>".$opilane->aine->hinne."</td>";
         echo "</tr>";
     }
     echo "</table>";
@@ -106,6 +107,9 @@ if(!empty($_POST['otsing']))
         <th>isikukood</th>
         <th>Eriala</th>
         <th>Elukoht</th>
+        <th>Pilt</th>
+        <th>Aine</th>
+        <th>Hinne</th>
     </tr>
     <?php
     foreach ($opilased->opilane as $opilane){
@@ -115,6 +119,9 @@ if(!empty($_POST['otsing']))
         echo "<td>".$opilane->eriala."</td>";
         echo "<td>".$opilane->elukoht->linn."</td>", ".
         $opilane->elukoht->maakond.</th>";
+        echo "<td>"."<img src='$opilane->pilt' alt='img'>"."</td>";
+        echo "<td>".$opilane->aine->nimetus."</td>";
+        echo "<td>".$opilane->aine->hinne."</td>";
         echo "</tr>";
     }
     }
@@ -123,7 +130,7 @@ if(!empty($_POST['otsing']))
 
 <h2>Õpilase sisestamine</h2>
 
-<form>
+<form method="post" name="vorm1">
     <tr>
         <td><label for="nimi">Nimi:</label></td>
         <td><input type="text" id="nimi" name="nimi"></td>
@@ -145,17 +152,31 @@ if(!empty($_POST['otsing']))
     </tr>
     <br>
     <tr>
+        <td><label for="pilt">Pilt:</label></td>
+        <td><textarea id="pilt" name="pilt" rows="3" cols="50"></textarea></td>
+    </tr>
+    <br>
+    <tr>
+        <td><label for="aine">Õppeaine:</label></td>
+        <td><input type="text" id="aine" name="aine"></td>
+    </tr>
+    <br>
+    <tr>
+        <td><label for="hinne">hinne:</label></td>
+        <td><input type="text" id="hinne" name="hinne"></td>
+    </tr>
+    <br>
+    <tr>
         <td><input type="submit" id="submit" name="submit" value="Sisesta"></td>
         <td></td>
     </tr>
 </form>
 
 <?php
-    if(isset($_POST['submit']))
-    {
-       lisaOpilane();
-       echo "<p>Õpilane on lisatud!</p>";
-    }
+if (isset($_POST["submit"])) {
+    LisaOpilane();
+    echo "<p>Õpilane on edukalt lisatud!</p>";
+}
 ?>
 
 </body>
